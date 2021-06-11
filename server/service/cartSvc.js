@@ -1,7 +1,22 @@
-let deduplicate = (rows) => {
+let deduplicateCarts = (carts) => {
     //Deduplicate logic
-    return rows;
+    let seen = new Map();
+    carts = carts.filter(function (cart) {
+        let  previous;
+
+        if (seen.hasOwnProperty(cart.id)) {
+            previous = seen[cart.id]
+            previous.quantity++
+            previous.price+= seen[cart.id].price
+            return false;
+        }else cart.quantity = 1;
+
+        seen[cart.id] = cart;
+
+        return true;
+    });
+    return carts;
 };
 
 
-module.exports = deduplicate;
+module.exports = deduplicateCarts;
