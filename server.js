@@ -22,6 +22,26 @@ app.get('/', function (req, res) {
 
 // Get product info API
 app.get('/product', function (req, res) {
+  db.all(`SELECT id FROM product WHERE product.is_obsoleted IS NULL`, (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    res.status(200).json({ "data": rows });
+  });
+})
+
+
+//Set Obsoleted Product
+app.put('/product/set-obsoleted', function (req,res) {
+  db.run(`UPDATE product
+  SET is_obsoleted = 1
+  WHERE product.type = 'B' AND product.price > 20;`, (err) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+  })
   db.all("SELECT * FROM product", (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });

@@ -3,7 +3,18 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
-  }
+}
+
+.header {
+  min-height: 5vh;
+  padding: 5px 10px;
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.header-child {
+  color: black;
+}
   
 .card {
     margin: 1rem;
