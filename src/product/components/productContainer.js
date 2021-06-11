@@ -22,7 +22,7 @@ export const ProductContainer = ({ storeAddCart }) => {
   return (
     <>
       <header className="header">
-        <button onClick={onPressSetObsoletedProduct} className="header-child"> Set Obsoleted Product</button>
+        <button onClick={onPressSetObsoletedProduct} className="header-child"> Remove Obsoleted Product</button>
       </header>
 
       <div className='align-grid'>
