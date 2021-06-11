@@ -54,7 +54,7 @@ app.put('/product/set-obsoleted', function (req,res) {
 
 //Get membership info 
 app.get('/membership', function (req, res) {
-  let sql = `SELECT * FROM membership`;
+  const sql = `SELECT * FROM membership ${req.query.grade ? `WHERE grade='${req.query.grade}'` : ''}`;
   db.all(sql, (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });

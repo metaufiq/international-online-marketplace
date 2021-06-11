@@ -3,8 +3,10 @@ import axios from 'axios';
 
 export const getMembership = (grade) => {
     let url = "/membership";
-    if(grade) url = url + `?grade=${grade}`;
-
+    if(grade && typeof grade === 'string'){
+        url += `?grade=${grade.toUpperCase()}`;
+    }
+    
     return axios.get(config.SERVER_ENDPOINT + url)
                 .then((res) => {
                     return res.data.data
